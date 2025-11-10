@@ -5,11 +5,11 @@ import Home from "../Pages/Home";
 import Register from "../Componets/Register";
 import Login from "../Componets/Login";
 import Issues from "../Pages/issues";
-import AllIssues from "../Pages/AllIssues";
 import MyIssues from "../Pages/MyIssues";
 import MyContribution from "../Pages/MyContribution";
 import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
+import AddIssues from "../Pages/AddIssues";
 
 export const Router = createBrowserRouter([
   {
@@ -33,10 +33,10 @@ export const Router = createBrowserRouter([
         Component: Issues,
       },
       {
-        path: "all-issues",
+        path: "add-issues",
         element: (
           <PrivateRoute>
-            <AllIssues />
+            <AddIssues />
           </PrivateRoute>
         ),
       },

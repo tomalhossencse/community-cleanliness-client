@@ -52,7 +52,7 @@ const NavBar = () => {
       {user && (
         <>
           <li>
-            <NavLink to="/all-issues">All Issues</NavLink>
+            <NavLink to="/add-issues">Add Issues</NavLink>
           </li>
           <li>
             <NavLink to="/my-issues">My Issues</NavLink>
@@ -101,7 +101,9 @@ const NavBar = () => {
                 {links}
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">CLEANLINESS</a>
+            <a className="btn btn-ghost text-2xl text-blue-700 font-bold">
+              CLEANLINESS
+            </a>
           </div>
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{links}</ul>

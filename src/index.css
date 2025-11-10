@@ -25,9 +25,9 @@
 }
 
 .navbar .active {
-  color: crimson;
+  color: blue;
   font-weight: bold;
   border: 1px solid #CAC8C8FF;
   border-radius: 20px;
-  background: rgb(243, 226, 226);
+  background: #a3cffa;
 }

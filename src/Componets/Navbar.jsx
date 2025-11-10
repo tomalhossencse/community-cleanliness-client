@@ -39,12 +39,32 @@ const NavBar = () => {
       <li>
         <NavLink to="/issues">Issues</NavLink>
       </li>
-      <li>
-        <NavLink to="/login">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
+      {!user && (
+        <>
+          <li>
+            <NavLink to="/login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">Register</NavLink>
+          </li>
+        </>
+      )}
+      {user && (
+        <>
+          <li>
+            <NavLink to="/all-issues">All Issues</NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-issues">My Issues</NavLink>
+          </li>
+          <li>
+            <NavLink to="/my-contribution">My Contribution</NavLink>
+          </li>
+          <li>
+            <NavLink to="/profile">Profile</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -98,7 +118,10 @@ const NavBar = () => {
                     <img
                       alt="Tailwind CSS Navbar component"
                       referrerPolicy="no-referrer"
-                      src={user.photoURL || user.provider.photoURL}
+                      src={
+                        user.photoURL ||
+                        "https://avatars.githubusercontent.com/u/195260435?v=4"
+                      }
                     />
                   </div>
                 </div>

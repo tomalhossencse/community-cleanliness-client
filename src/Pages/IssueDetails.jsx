@@ -2,13 +2,19 @@ import React, { use, useEffect, useState } from "react";
 import Container from "../Componets/Container";
 import { useParams } from "react-router";
 import { FaLocationDot } from "react-icons/fa6";
-import { IoIosTime } from "react-icons/io";
+import {
+  IoIosClose,
+  IoIosTime,
+  IoMdCloseCircle,
+  IoMdCloseCircleOutline,
+} from "react-icons/io";
 import { AuthContext } from "../Context/AuthContext";
 import Loading from "../Componets/Loading";
 
 const IssueDetails = () => {
   const [details, setdetails] = useState({});
   const [loading, setLoading] = useState(true);
+  const { user } = use(AuthContext);
   const { id } = useParams();
   const { image, title, cat, location, date, amount, description } = details;
   useEffect(() => {
@@ -29,6 +35,29 @@ const IssueDetails = () => {
     minute: "2-digit",
     hour12: true,
   });
+  const handleAddContribute = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const title = form.title.value;
+    const amount = form.amount.value;
+    const name = form.name.value;
+    const email = form.email.value;
+    const phone = form.phone.value;
+    const address = form.address.value;
+    const info = form.info.value;
+    const newCotribution = {
+      title,
+      amount,
+      name,
+      email,
+      phone,
+      address,
+      info,
+      date: new Date(),
+    };
+    console.log(newCotribution);
+    form.reset();
+  };
   if (loading) {
     return <Loading />;
   }
@@ -57,12 +86,121 @@ const IssueDetails = () => {
             {description}
           </div>
           <div className="flex gap-4">
-            <button className="btn flex-1 btn-md text-left bg-linear-to-r from-green-500 to-green-700 text-white">
+            <button
+              onClick={() => document.getElementById("my_modal_5").showModal()}
+              className="btn flex-1 btn-md text-left bg-linear-to-r from-green-500 to-green-700 text-white"
+            >
               Pay Clean-Up Contribution
             </button>
           </div>
         </div>
       </Container>
+      {/* model */}
+      <dialog
+        id="my_modal_5"
+        className="modal modal-bottom sm:modal-middle relative"
+      >
+        <div className="modal-box">
+          <h1 className="text-center font-semibold text-2xl text-blue-600 p-4">
+            Pay Clean-Up Contribution
+          </h1>
+          <form
+            onSubmit={handleAddContribute}
+            className="bg-white grid grid-cols-2 gap-x-2"
+          >
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Issue Title</legend>
+              <input
+                type="text"
+                name="title"
+                className="input w-full"
+                placeholder="e.g. Garbage"
+                required
+              />
+            </fieldset>
+
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Amount ($)</legend>
+              <input
+                name="amount"
+                type="number"
+                className="input w-full"
+                placeholder="e.g. 18.5"
+                required
+              />
+            </fieldset>
+            {/* Contributor Name */}
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Contributor Name</legend>
+              <input
+                name="name"
+                type="text"
+                className="input w-full"
+                placeholder="Your Name"
+                required
+              />
+            </fieldset>
+
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Email</legend>
+              <input
+                name="email"
+                type="email"
+                className="input w-full"
+                placeholder="leli31955@nrlord.com"
+                value={user.email}
+              />
+            </fieldset>
+            {/* phone */}
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Phone Number</legend>
+              <input
+                name="phone"
+                type="text"
+                className="input w-full"
+                placeholder="+8801XXXXXXXX"
+                required
+              />
+            </fieldset>
+
+            <fieldset className="fieldset">
+              <legend className="fieldset-legend">Address</legend>
+              <input
+                name="address"
+                type="text"
+                className="input w-full"
+                placeholder="City, Country"
+                required
+              />
+            </fieldset>
+            {/* info */}
+            <fieldset className="fieldset col-span-2">
+              <legend className="fieldset-legend">Additional Info</legend>
+              <input
+                name="info"
+                type="text"
+                className="input w-full"
+                placeholder="Additional Info"
+              />
+            </fieldset>
+
+            <button
+              onClick={() => document.getElementById("my_modal_5").close()}
+              type="sumbit"
+              className="btn btn-primary w-full col-span-2 my-4 text-lg p-4"
+            >
+              Contribute
+            </button>
+          </form>
+          <button
+            className="absolute top-3 right-3 cursor-pointer"
+            title="click to close"
+            onClick={() => document.getElementById("my_modal_5").close()}
+          >
+            <IoIosClose size={40} color="blue" />
+          </button>
+        </div>
+      </dialog>
     </div>
   );
 };

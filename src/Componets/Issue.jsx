@@ -1,12 +1,8 @@
 import React from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { Link } from "react-router";
 
 const Issue = ({ issue }) => {
   const { title, image, cat, location, amount, _id } = issue;
-  //   const navigate = useNavigate();
-  //   const handleDetails = () => {
-  //     navigate("issues/:id");
-  //   };
   return (
     <div className="card bg-base-100 shadow-sm relative">
       <figure>

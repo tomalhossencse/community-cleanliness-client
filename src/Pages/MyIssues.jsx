@@ -2,10 +2,12 @@ import React, { use, useEffect, useState } from "react";
 import { DateFormat } from "../utility/DateFormat";
 import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
+import Swal from "sweetalert2";
 
 const MyIssues = () => {
   const [issues, setIssues] = useState([]);
   const { user } = use(AuthContext);
+  const [refetch, setRefetch] = useState(false);
   useEffect(() => {
     fetch(`http://localhost:3000/my-issues?email=${user.email}`)
       .then((res) => res.json())
@@ -13,7 +15,42 @@ const MyIssues = () => {
         console.log(data);
         setIssues(data);
       });
-  }, [user]);
+  }, [user, refetch]);
+  const handleIssueDelete = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:3000/issues/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+              setRefetch(!refetch);
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      }
+    });
+  };
   return (
     <Container>
       <div className="overflow-x-auto">
@@ -67,6 +104,7 @@ const MyIssues = () => {
                 </th>
                 <th>
                   <button
+                    onClick={() => handleIssueDelete(issue._id)}
                     className="btn btn-warning text-white
                    btn-xs"
                   >

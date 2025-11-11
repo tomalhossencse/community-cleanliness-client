@@ -84,7 +84,7 @@ const IssueDetails = () => {
         <div className="flex-1">
           <img className="rounded-xl" src={image} alt="" />
         </div>
-        <div className="space-y-6">
+        <div className="space-y-6 flex-1">
           <h1 className="text-3xl font-bold text-blue-700">{title}</h1>
           <p className="text-red-600">{cat}</p>
           <div className="flex gap-4">

@@ -47,7 +47,7 @@ const MyIssues = () => {
       date: new Date(),
       description,
     };
-    console.log(updatedIssues);
+    // console.log(updatedIssues);
     fetch(`http://localhost:3000/issues/${id}`, {
       method: "PATCH",
       headers: {

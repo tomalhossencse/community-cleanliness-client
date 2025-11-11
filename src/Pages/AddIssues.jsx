@@ -51,9 +51,6 @@ const AddIssues = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          // newIssues._id = data.insertedId;
-          // const updateIssues = [...issues, newIssues];
-          // setIssues(updateIssues);
           form.reset();
         }
       });

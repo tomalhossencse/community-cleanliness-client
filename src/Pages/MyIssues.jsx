@@ -3,12 +3,14 @@ import { DateFormat } from "../utility/DateFormat";
 import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
 import Swal from "sweetalert2";
+import Loading from "../Componets/Loading";
 
 const MyIssues = () => {
   const [issues, setIssues] = useState([]);
   const { user } = use(AuthContext);
   const [cat, setCat] = useState("Garbage");
   const [status, setStatus] = useState("ongoing");
+  const [loading, setLoading] = useState(true);
   const [refetch, setRefetch] = useState(false);
   const handleCatChange = (e) => {
     setCat(e.target.value);
@@ -22,6 +24,7 @@ const MyIssues = () => {
       .then((data) => {
         console.log(data);
         setIssues(data);
+        setLoading(false);
       });
   }, [user, refetch]);
   const handleIssueSubmit = (e, id) => {
@@ -54,8 +57,17 @@ const MyIssues = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        document.getElementById(`modal_${id}`).close();
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Your Issues Added successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          setRefetch(!refetch);
+          document.getElementById(`modal_${id}`).close();
+        }
       });
   };
   const handleIssueDelete = (id) => {
@@ -93,6 +105,9 @@ const MyIssues = () => {
       }
     });
   };
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <Container>
       <div className="overflow-x-auto">

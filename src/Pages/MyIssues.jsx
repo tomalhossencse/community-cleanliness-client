@@ -1,4 +1,4 @@
-import React, { use, useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { DateFormat } from "../utility/DateFormat";
 import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
@@ -24,7 +24,7 @@ const MyIssues = () => {
         setIssues(data);
       });
   }, [user, refetch]);
-  const handleIssueSubmit = (e) => {
+  const handleIssueSubmit = (e, id) => {
     e.preventDefault();
     const form = e.target;
     const title = form.title.value;
@@ -55,6 +55,7 @@ const MyIssues = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        document.getElementById(`modal_${id}`).close();
       });
   };
   const handleIssueDelete = (id) => {
@@ -92,7 +93,6 @@ const MyIssues = () => {
       }
     });
   };
-  const modalref = useRef();
   return (
     <Container>
       <div className="overflow-x-auto">
@@ -112,7 +112,7 @@ const MyIssues = () => {
           <tbody>
             {/* row 1 */}
             {issues.map((issue, index) => (
-              <tr>
+              <tr key={issue._id}>
                 <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center gap-3">
@@ -138,9 +138,11 @@ const MyIssues = () => {
                 <td>{DateFormat(issue.date)}</td>
                 <th>
                   <button
+                    onClick={() =>
+                      document.getElementById(`modal_${issue._id}`).showModal()
+                    }
                     className="btn btn-success text-white
                    btn-xs"
-                    onClick={() => modalref.current.showModal()}
                   >
                     Update
                   </button>
@@ -155,11 +157,11 @@ const MyIssues = () => {
                   </button>
                   {/* modal */}
                   <dialog
-                    ref={modalref}
+                    id={`modal_${issue._id}`}
                     className="modal modal-bottom sm:modal-middle"
                   >
                     <div className="modal-box">
-                      <form onSubmit={handleIssueSubmit}>
+                      <form onSubmit={(e) => handleIssueSubmit(e, issue._id)}>
                         <fieldset className="fieldset grid grid-cols-2">
                           <div className="col-span-2">
                             <legend className="fieldset-legend">
@@ -170,6 +172,7 @@ const MyIssues = () => {
                               name="title"
                               className="input w-full"
                               placeholder="e.g. Garbage"
+                              defaultValue={issue.title}
                               required
                             />
                           </div>
@@ -179,9 +182,8 @@ const MyIssues = () => {
                             </legend>
                             <select
                               className="select"
-                              value={cat}
+                              defaultValue={issue.cat}
                               onChange={handleCatChange}
-                              defaultChecked={issue.category}
                             >
                               <option disabled={true}>Select a Category</option>
                               <option>Garbage</option>
@@ -200,7 +202,7 @@ const MyIssues = () => {
                                   name="status"
                                   className="radio radio-primary"
                                   value="ongoing"
-                                  checked={status === "ongoing"}
+                                  defaultChecked={issue.status === "ongoing"}
                                   onChange={handleChange}
                                 />
                                 <h1>ongoing</h1>
@@ -208,10 +210,10 @@ const MyIssues = () => {
                               <div className="flex items-center justify-center gap-1">
                                 <input
                                   type="radio"
-                                  name="condition"
+                                  name="status"
                                   className="radio radio-primary"
                                   value="solved"
-                                  checked={status === "solved"}
+                                  defaultChecked={issue.status === "solved"}
                                   onChange={handleChange}
                                 />
                                 <h1>Solved</h1>
@@ -229,6 +231,7 @@ const MyIssues = () => {
                               className="input w-full"
                               placeholder="e.g. 18.5"
                               required
+                              defaultValue={issue.amount}
                             />
                           </div>
 
@@ -241,6 +244,7 @@ const MyIssues = () => {
                               type="text"
                               className="input w-full"
                               placeholder="City, Country"
+                              defaultValue={issue.location}
                               required
                             />
                           </div>
@@ -253,6 +257,7 @@ const MyIssues = () => {
                               className="input w-full"
                               placeholder="leli31955@nrlord.com"
                               value={user.email}
+                              readOnly
                             />
                           </div>
                           <div className="col-span-2">
@@ -264,6 +269,7 @@ const MyIssues = () => {
                               type="text"
                               className="input w-full"
                               placeholder="https://..."
+                              defaultValue={issue.image}
                               required
                             />
                           </div>
@@ -277,6 +283,7 @@ const MyIssues = () => {
                               name="description"
                               className="input w-full"
                               placeholder="e.g. garbage is big problem of our city..........."
+                              defaultValue={issue.description}
                               required
                             />
                           </div>

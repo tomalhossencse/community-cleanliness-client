@@ -20,7 +20,10 @@ const MyIssues = () => {
   };
   useEffect(() => {
     fetch(
-      `https://community-cleanliness-server-alpha.vercel.app/my-issues?email=${user.email}`
+      `https://community-cleanliness-server-alpha.vercel.app/my-issues?email=${user.email}`,
+      {
+        headers: { authorization: `Bearer ${user.accessToken}` },
+      }
     )
       .then((res) => res.json())
       .then((data) => {

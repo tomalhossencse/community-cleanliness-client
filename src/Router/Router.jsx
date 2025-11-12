@@ -11,6 +11,7 @@ import Profile from "../Pages/Profile";
 import PrivateRoute from "./PrivateRoute";
 import AddIssues from "../Pages/AddIssues";
 import IssueDetails from "../Pages/IssueDetails";
+import ErrorPage from "../Pages/ErrorPage";
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -71,6 +72,10 @@ export const Router = createBrowserRouter([
             <IssueDetails />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "*",
+        Component: ErrorPage,
       },
     ],
   },

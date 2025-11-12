@@ -157,13 +157,19 @@ const NavBar = () => {
               to={"/"}
               className="btn btn-ghost text-2xl text-blue-700 font-bold"
             >
+              <img
+                className="h-10 mr-2"
+                src="https://i.ibb.co.com/4gjvRwFN/logo.png"
+                alt=""
+              />{" "}
               CLEANLINESS
             </Link>
           </div>
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{links}</ul>
-          </div>
+
           <div className="navbar-end gap-3">
+            <div className="navbar-center hidden lg:flex">
+              <ul className="menu menu-horizontal px-1">{links}</ul>
+            </div>
             {user ? (
               <div className="dropdown dropdown-end z-50">
                 <div

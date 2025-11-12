@@ -36,11 +36,8 @@ const IssueDetails = () => {
         )
           .then((res) => res.json())
           .then((data) => {
-            // console.log(data);
-            // setRefetch(!refetch);
             setContributions(data);
           });
-        // console.log(data);
         setLoading(false);
       });
   }, [id, refetch]);

@@ -8,7 +8,9 @@ const Profile = () => {
   // console.log(user);
   return (
     <Container
-      className={"flex flex-col items-center justify-center my-6 space-y-4"}
+      className={
+        "flex flex-col items-center justify-center space-y-4 min-h-[90vh]"
+      }
     >
       <h1 className="text-3xl font-semibold">My profile</h1>
       <img src={photoURL} className="rounded-full" alt="" />

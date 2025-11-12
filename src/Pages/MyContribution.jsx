@@ -3,6 +3,7 @@ import { AuthContext } from "../Context/AuthContext";
 import Container from "../Componets/Container";
 import { DateFormat } from "../utility/DateFormat";
 import Loading from "../Componets/Loading";
+import DownlaodPdf from "./DownlaodPdf";
 
 const MyContribution = () => {
   const { user } = use(AuthContext);
@@ -69,9 +70,7 @@ const MyContribution = () => {
         </table>
       </div>
       <div className="max-w-5xl mx-auto my-10">
-        <button className="btn btn-primary w-full p-6 text-lg">
-          Download report
-        </button>
+        <DownlaodPdf contributions={contributions} />
       </div>
     </Container>
   );

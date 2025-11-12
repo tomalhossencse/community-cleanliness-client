@@ -72,7 +72,7 @@ const IssueDetails = () => {
       phone,
       address,
       info,
-      date: new Date(),
+      date: DateFormat(new Date()),
       category: cat,
       photoURL: user.photoURL,
     };

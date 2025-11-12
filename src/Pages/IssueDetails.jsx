@@ -13,6 +13,7 @@ const IssueDetails = () => {
   const [loading, setLoading] = useState(true);
   const [contributors, setContributions] = useState([]);
   const [refetch, setRefetch] = useState(false);
+  const [total, setTotal] = useState(0);
   const { user } = use(AuthContext);
   const { id } = useParams();
   const { image, title, cat, location, date, amount, description, _id } =
@@ -20,24 +21,33 @@ const IssueDetails = () => {
   useEffect(() => {
     fetch(`https://community-cleanliness-server-alpha.vercel.app/issues/${id}`)
       .then((res) => res.json())
-      .then(
-        (data) => {
-          setdetails(data);
-          fetch(
-            `https://community-cleanliness-server-alpha.vercel.app/my-contributions/${id}`
-          )
-            .then((res) => res.json())
-            .then((data) => {
-              // console.log(data);
-              setRefetch(!refetch);
-              setContributions(data);
-            });
-          // console.log(data);
-          setLoading(false);
-        },
-        [id, refetch]
-      );
-  });
+      .then((data) => {
+        setdetails(data);
+        fetch(
+          `https://community-cleanliness-server-alpha.vercel.app/my-contributions/${id}`
+        )
+          .then((res) => res.json())
+          .then((data) => {
+            // console.log(data);
+            // setRefetch(!refetch);
+            setContributions(data);
+          });
+        // console.log(data);
+        setLoading(false);
+      });
+  }, [id, refetch]);
+
+  // set total
+
+  useEffect(() => {
+    const totalContributeAmount = contributors.reduce(
+      (sum, item) => sum + Number(item.amount),
+      0
+    );
+    setTotal(totalContributeAmount);
+  }, [contributors]);
+  console.log(total);
+
   const formattedDate = DateFormat(date);
   const handleAddContribute = (e) => {
     e.preventDefault();
@@ -85,6 +95,7 @@ const IssueDetails = () => {
             timer: 1500,
           });
           form.reset();
+          setRefetch(!refetch);
         }
       });
   };
@@ -167,12 +178,23 @@ const IssueDetails = () => {
                       </div>
                     </td>
                     <td>
-                      <span className="text-xl font-medium">
+                      <span className="text-lg font-medium">
                         ${contribution.amount}
                       </span>
                     </td>
                   </tr>
                 ))}
+                <tr className="border-t-2 border-blue-200">
+                  <td></td>
+                  <td className="text-xl font-medium text-blue-600">
+                    ToTal Amount {"    "}=
+                  </td>
+                  <td>
+                    <span className="text-xl font-medium text-blue-600">
+                      ${total}
+                    </span>
+                  </td>
+                </tr>
               </tbody>
             </table>
           </div>
@@ -268,7 +290,7 @@ const IssueDetails = () => {
                 </fieldset>
 
                 <button
-                  type="sumbit"
+                  type="submit"
                   className="btn btn-primary w-full col-span-2 my-4 text-lg p-4"
                 >
                   Contribute

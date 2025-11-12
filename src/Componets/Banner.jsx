@@ -1,5 +1,6 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css/effect-fade";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -11,27 +12,25 @@ import {
   Scrollbar,
   A11y,
   Autoplay,
+  EffectFade,
 } from "swiper/modules";
 const Banner = () => {
   return (
-    <div className="my-10 max-w-7xl mx-auto">
+    <div className="mt-20 mb-10 max-w-7xl mx-auto">
       <Swiper
-        // Modules used: Navigation, Pagination, Scrollbar, A11y, Autoplay
-        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+        modules={[Pagination, Scrollbar, A11y, Autoplay, EffectFade]}
         spaceBetween={30}
         slidesPerView={1}
-        // * ENHANCEMENT: Navigation Arrows UNCOMMENTED *
         navigation={true}
         pagination={{ clickable: true }}
-        // scrollbar={{ draggable: true }}
+        loop={true}
+        effect={"fade"}
         autoplay={{
           delay: 3000,
-          disableOnInteraction: false, // Continue autoplay after user interaction
+          disableOnInteraction: false,
         }}
-        // Tailwind classes for overall look
         className="rounded-xl shadow-2xl"
       >
-        {/* --- SLIDE 1: Keep Our City Clean --- */}
         <SwiperSlide>
           <div className="relative">
             <img
@@ -48,14 +47,13 @@ const Banner = () => {
               Join hands to report garbage and ensure a cleaner, healthier
               community for everyone.
             </p>
-            {/* * ENHANCEMENT: CTA Button * */}
+
             <button className="px-8 py-3 bg-green-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-green-600 transition duration-300 transform hover:scale-105">
               Report Garbage Now
             </button>
           </div>
         </SwiperSlide>
 
-        {/* --- SLIDE 2: Stop Illegal Constructions --- */}
         <SwiperSlide>
           <div className="relative">
             <img
@@ -73,14 +71,13 @@ const Banner = () => {
               Together, we can protect public spaces and ensure safe urban
               development.
             </p>
-            {/* * ENHANCEMENT: CTA Button * */}
+
             <button className="px-8 py-3 bg-red-600 text-white font-bold text-lg rounded-full shadow-xl hover:bg-red-700 transition duration-300 transform hover:scale-105">
               Report Unauthorized Building
             </button>
           </div>
         </SwiperSlide>
 
-        {/* --- SLIDE 3: Report Broken Public Property --- */}
         <SwiperSlide>
           <div className="relative">
             <img
@@ -98,14 +95,13 @@ const Banner = () => {
               public structures to keep the environment safe and functional for
               everyone.
             </p>
-            {/* * ENHANCEMENT: CTA Button * */}
+
             <button className="px-8 py-3 bg-indigo-500 text-white font-bold text-lg rounded-full shadow-xl hover:bg-indigo-600 transition duration-300 transform hover:scale-105">
               Report Damage
             </button>
           </div>
         </SwiperSlide>
 
-        {/* --- SLIDE 4: Report Road Damage --- */}
         <SwiperSlide>
           <div className="relative">
             <img
@@ -123,7 +119,7 @@ const Banner = () => {
               damaged roads in your area and help local authorities take quick
               action to ensure safe travel for everyone.
             </p>
-            {/* * ENHANCEMENT: CTA Button * */}
+
             <button className="px-8 py-3 bg-yellow-500 text-black font-bold text-lg rounded-full shadow-xl hover:bg-yellow-600 transition duration-300 transform hover:scale-105">
               Report Pothole
             </button>

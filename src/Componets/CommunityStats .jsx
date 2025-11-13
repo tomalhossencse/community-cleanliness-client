@@ -25,7 +25,7 @@ const CommunityStats = () => {
     return <Animation />;
   }
   return (
-    <div className="my-12 bg-accent-content">
+    <div className="mt-24 mb-6 bg-accent-content">
       <Container className="flex items-center justify-between gap-10 p-12">
         <div className="flex-1 space-y-2">
           <h1 className="text-xl md:text-3xl font-medium text-accent">

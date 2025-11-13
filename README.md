@@ -1,17 +1,30 @@
-# React + Vite
+# Community Cleanliness webapp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Live site (client):** https://community-cleanliness-webapp.netlify.app
 
-Currently, two official plugins are available:
+## About
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Community Cleanliness webapp is a community-driven web app for reporting and tracking local issues — like garbage, illegal construction, broken public property, and road damage. It connects residents, volunteers, and local authorities to make neighborhoods cleaner, safer, and more sustainable.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Report Issues Quickly** — Submit photos, location, and short descriptions in seconds using a friendly mobile-first UI.
+- **Real-time Status & Tracking** — View the status of reported issues (reported, in progress, resolved) and follow updates.
+- **Community Stats Dashboard** — See totals for reported issues, resolved cases, active volunteers, and ongoing projects at a glance.
+- **Volunteer & Action Hub** — Sign up to help, join cleanup events, and coordinate with other community members.
+- **Searchable Issue Feed** — Filter reports by category, location, and status to find what matters most to you.
+- **Authentication & Security** — Secure sign-in (email / OAuth) and role-based controls volunteers.
 
-## Expanding the ESLint configuration
+## Tech Stack (Client)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# community-cleanliness-client
+- React
+- TailwindCSS + DaisyUI (UI)
+- React Router
+- Authentication: Firebase Auth
+- Deployment: Netlify (client)
+
+## Tech Stack (Sever)
+
+- Node js
+- MongoDB
+- express js

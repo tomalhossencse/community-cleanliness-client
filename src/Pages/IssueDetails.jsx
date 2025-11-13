@@ -8,6 +8,7 @@ import Loading from "../Componets/Loading";
 import Swal from "sweetalert2";
 import { DateFormat } from "../utility/DateFormat";
 import IssuesNotFoundPage from "./IssuesNotFoundPage";
+import Animation from "../utility/Animation";
 
 const IssueDetails = () => {
   const [details, setdetails] = useState({});
@@ -104,7 +105,7 @@ const IssueDetails = () => {
       });
   };
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   if (notFound) {
     return <IssuesNotFoundPage />;

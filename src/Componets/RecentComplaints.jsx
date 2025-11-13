@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Container from "./Container";
 import Issue from "./issue";
-import Loading from "./Loading";
+import Animation from "../utility/Animation";
 
 const RecentComplaints = () => {
   const [issues, setIssues] = useState([]);
@@ -18,7 +18,7 @@ const RecentComplaints = () => {
       });
   }, []);
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   return (
     <Container className="my-12">

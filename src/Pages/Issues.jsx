@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "../Componets/Container";
 import Issue from "../Componets/issue";
 import Loading from "../Componets/Loading";
+import Animation from "../utility/Animation";
 
 const Issues = () => {
   const [issues, setIssues] = useState([]);
@@ -27,7 +28,7 @@ const Issues = () => {
     return true;
   });
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   return (
     <Container className="mt-20">

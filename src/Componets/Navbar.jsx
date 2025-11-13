@@ -155,14 +155,14 @@ const NavBar = () => {
             </div>
             <Link
               to={"/"}
-              className="btn btn-ghost text-2xl text-blue-700 font-bold"
+              className="btn btn-ghost text-[24px] text-secondary font-bold"
             >
               <img
                 className="h-10 mr-2"
                 src="https://i.ibb.co.com/4gjvRwFN/logo.png"
                 alt=""
               />{" "}
-              CLEANLINESS
+              Cleanliness
             </Link>
           </div>
 
@@ -204,7 +204,7 @@ const NavBar = () => {
                   <li>
                     <button
                       onClick={logoutUser}
-                      className="btn btn-xs text-left bg-linear-to-r from-blue-500 to-blue-800 text-white"
+                      className="btn-xs bg-green-500 text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
                     >
                       <IoLogOut /> Logout
                     </button>
@@ -214,7 +214,7 @@ const NavBar = () => {
             ) : (
               <Link
                 to={"/login"}
-                className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-blue-500 to-blue-800 text-white"
+                className="btn btn-sm bg-primary rounded-md shadow-md hover:bg-black transition-transform hover:scale-105  text-white"
               >
                 {" "}
                 <IoLogIn /> Login

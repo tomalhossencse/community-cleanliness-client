@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
+import Animation from "../utility/Animation";
 
 const CommunityStats = () => {
   const [loading, setLoading] = useState(true);
@@ -20,7 +21,7 @@ const CommunityStats = () => {
       });
   }, []);
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   return (
     <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">

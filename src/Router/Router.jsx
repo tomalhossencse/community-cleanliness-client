@@ -4,7 +4,6 @@ import MainLayout from "../Layouts/MainLayout";
 import Home from "../Pages/Home";
 import Register from "../Componets/Register";
 import Login from "../Componets/Login";
-import Issues from "../Pages/issues";
 import MyIssues from "../Pages/MyIssues";
 import MyContribution from "../Pages/MyContribution";
 import Profile from "../Pages/Profile";
@@ -12,6 +11,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddIssues from "../Pages/AddIssues";
 import IssueDetails from "../Pages/IssueDetails";
 import ErrorPage from "../Pages/ErrorPage";
+import Issues from "../Pages/Issues";
 export const Router = createBrowserRouter([
   {
     path: "/",

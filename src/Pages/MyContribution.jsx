@@ -4,6 +4,7 @@ import Container from "../Componets/Container";
 import { DateFormat } from "../utility/DateFormat";
 import Loading from "../Componets/Loading";
 import DownlaodPdf from "./DownlaodPdf";
+import Animation from "../utility/Animation";
 
 const MyContribution = () => {
   const { user } = use(AuthContext);
@@ -21,7 +22,7 @@ const MyContribution = () => {
       });
   }, [user]);
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   return (
     <Container>

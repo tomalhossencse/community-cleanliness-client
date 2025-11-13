@@ -5,6 +5,7 @@ import Container from "../Componets/Container";
 import Swal from "sweetalert2";
 import Loading from "../Componets/Loading";
 import IssuesNotFoundPage from "./IssuesNotFoundPage";
+import Animation from "../utility/Animation";
 
 const MyIssues = () => {
   const [issues, setIssues] = useState([]);
@@ -118,7 +119,7 @@ const MyIssues = () => {
     });
   };
   if (loading) {
-    return <Loading />;
+    return <Animation />;
   }
   return (
     <Container>

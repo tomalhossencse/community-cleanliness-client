@@ -22,10 +22,10 @@ const RecentComplaints = () => {
   }
   return (
     <Container className="my-12">
-      <h1 className="text-4xl font-semibold text-center mb-6">
+      <h1 className="text-3xl font-semibold text-accent text-center mb-8">
         Recent Complaints
       </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 md:p-0 p-4 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 md:p-0 p-4 lg:grid-cols-3 gap-6">
         {issues.map((issue) => (
           <Issue key={issue._id} issue={issue} />
         ))}

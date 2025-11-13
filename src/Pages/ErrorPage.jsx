@@ -7,21 +7,21 @@ const ErrorPage = () => {
   return (
     <div>
       <Container>
-        <div className="flex flex-col justify-center items-center space-y-4 my-4">
+        <div className="flex flex-col justify-center items-center p-4 space-y-4 my-14">
           <img
-            className="p-6 h-[400px]"
-            src="https://i.ibb.co.com/vCYQfnkP/404.jpg"
+            className="p-6 md:h-[400px] h-[250px]"
+            src="https://i.ibb.co.com/Gv9McZnF/Asset-1.png"
             alt=""
           />
-          <h1 className="text-4xl text-[#001931] font-bold">
+          <h1 className="md:text-4xl text-3xl text-secondary font-bold">
             Oops, page not found!
           </h1>
-          <p className="text-[#627382]">
+          <p className="text-accent">
             The page you are looking for is not available.
           </p>
           <button
             onClick={() => navigate(-1)}
-            className="btn px-8 text-white bg-gradient-to-tl from-[#9F62F2] to-[#632EE3]"
+            className="btn px-6 bg-primary text-white font-bold text-md rounded-md shadow-md hover:bg-black transition-transform hover:scale-105"
           >
             Go Back
           </button>

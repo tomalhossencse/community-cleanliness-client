@@ -120,7 +120,7 @@ const NavBar = () => {
     </>
   );
   return (
-    <div className="bg-base-100 shadow-md fixed w-full top-0 z-20">
+    <div className="bg-base-100 shadow-md fixed w-full top-0 z-20 md:px-0 px-4">
       <Container>
         <div className="navbar">
           <div className="navbar-start">
@@ -158,7 +158,7 @@ const NavBar = () => {
               className="btn btn-ghost text-[24px] text-primary font-bold"
             >
               <img
-                className="h-10 mr-2"
+                className="h-8 mr-2"
                 src="https://i.ibb.co.com/4gjvRwFN/logo.png"
                 alt=""
               />{" "}

@@ -115,7 +115,7 @@ const IssueDetails = () => {
     <div className="bg-base-200 py-24 min-h-[90vh]">
       <Container>
         <div>
-          <div className="md:flex bg-base-100 shadow-md p-8 rounded-2xl gap-8 items-center">
+          <div className="md:flex bg-base-100 space-y-4 shadow-md p-8 rounded-2xl gap-8 items-center">
             <div className="flex-1">
               <img className="rounded-xl" src={image} alt="" />
             </div>
@@ -190,7 +190,7 @@ const IssueDetails = () => {
                       </td>
                       <td>
                         <span className="text-lg font-medium">
-                          ${contribution.amount}
+                          $ {contribution.amount}
                         </span>
                       </td>
                     </tr>
@@ -203,9 +203,10 @@ const IssueDetails = () => {
                       Total Amount
                     </td>
                     <td>
-                      <span className="text-xl font-medium text-primary">
-                        = {""}${total}
-                      </span>
+                      <div className="flex justify-between items-center gap-1 text-primary">
+                        <RiMoneyDollarCircleFill size={24} />
+                        <span className="text-xl font-medium ">{total}</span>
+                      </div>
                     </td>
                   </tr>
                 </tbody>

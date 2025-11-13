@@ -5,7 +5,7 @@ import React from "react";
 const DownlaodPdf = ({ contributions }) => {
   const downlaodReport = () => {
     const doc = new jsPDF();
-    const columns = ["Title", "Category", "Date", "Amount", "Location"];
+    const columns = ["Title", "Category", "Date", "Amount($)", "Location"];
     const rows = contributions.map((contribute) => [
       contribute.title,
       contribute.category,

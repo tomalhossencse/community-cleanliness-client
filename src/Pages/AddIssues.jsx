@@ -56,14 +56,14 @@ const AddIssues = () => {
       });
   };
   return (
-    <div className="my-16">
+    <div className="mt-20">
       <div className="md:w-3xl w-sm mx-auto">
-        <h1 className="text-4xl font-bold pt-4 text-center">
-          Add <span className="text-primary">Issues</span>
+        <h1 className="text-3xl font-semibold text-accent text-center">
+          Add Issues
         </h1>
         <form
           onSubmit={handleAddIssues}
-          className="bg-accent-content/60 p-6 m-8"
+          className="bg-accent-content/60 md:p-6 p-4 md:m-8 my-4"
         >
           <fieldset className="fieldset grid grid-cols-2">
             <div>

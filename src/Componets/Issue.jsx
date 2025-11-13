@@ -8,7 +8,11 @@ import { Link } from "react-router";
 const Issue = ({ issue }) => {
   const { title, image, cat, location, amount, _id } = issue;
   return (
-    <div className="flex flex-col bg-base-200 p-6 rounded-xl space-y-4 shadow-md">
+    <div
+      className="flex flex-col bg-base-200 p-6 rounded-xl space-y-4 shadow-md 
+            transform transition duration-300 ease-in-out 
+            hover:scale-105 hover:bg-green-50 hover:-translate-y-1"
+    >
       <div className="w-full h-[250px]">
         <img
           className="rounded-xl w-full h-full object-cover"

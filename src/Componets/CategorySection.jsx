@@ -1,55 +1,46 @@
-import React from "react";
-
-const categories = [
-  {
-    title: "Garbage",
-    image:
-      "https://i.ibb.co/7JL7jG4y/engin-akyurt-M2-W0-J6-Sqi-Sg-unsplash.jpg",
-  },
-  {
-    title: "Illegal Construction",
-    image:
-      "https://bangladeshpost.net/webroot/uploads/featureimage/2025-11/690a250cb5070.jpg",
-  },
-  {
-    title: "Broken Public Property",
-    image:
-      "https://www.livelaw.in/cms/wp-content/uploads/2016/02/Patidar-Agitation-in-Gujarat-min.jpg",
-  },
-  {
-    title: "Road Damage",
-    image:
-      "https://images.unsplash.com/photo-1635068741358-ab1b9813623f?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGFtYWdlZCUyMHJvYWR8ZW58MHx8MHx8fDA%3D&fm=jpg&q=60&w=3000",
-  },
-];
+import React, { useEffect, useState } from "react";
+import Animation from "../utility/Animation";
 
 const CategorySection = () => {
+  const [categories, setCategories] = useState([]);
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    fetch(
+      "https://community-cleanliness-server-alpha.vercel.app/category-collections"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setCategories(data);
+        setLoading(false);
+      });
+  }, []);
+  if (loading) {
+    return <Animation />;
+  }
   return (
-    <section className="py-10 bg-gray-50">
-      <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
-        Category Section
+    <div className="my-12">
+      <h2 className="text-3xl font-semibold text-accent text-center mb-8">
+        Category
       </h2>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 px-6 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
         {categories.map((cat, index) => (
           <div
             key={index}
-            className="rounded-2xl overflow-hidden shadow-lg bg-white hover:shadow-2xl transition-all duration-300 cursor-pointer"
+            className="flex flex-col justify-center items-center py-6 px-3 space-y-2 
+            rounded-xl border-2 border-gray-100 
+            transition transform duration-300 shadow-sm ease-in-out 
+            hover:border-primary hover:scale-105 hover:shadow-md"
           >
-            <img
-              src={cat.image}
-              alt={cat.title}
-              className="h-48 w-full object-cover"
-            />
-            <div className="p-4 text-center">
-              <h3 className="text-lg font-semibold text-gray-700">
-                {cat.title}
-              </h3>
-            </div>
+            <img src={cat.image} alt={cat.title} className="w-20" />
+
+            <h3 className="text-lg font-semibold text-accent">{cat.title}</h3>
+            <p className="text-accent text-sm text-center">{cat.description}</p>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 };
 

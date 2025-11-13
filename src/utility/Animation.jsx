@@ -12,13 +12,11 @@ const Animation = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-base-200">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       {animationData ? (
         <Lottie animationData={animationData} loop={true} />
       ) : (
-        <p>
-          <Loading />
-        </p>
+        <Loading />
       )}
     </div>
   );

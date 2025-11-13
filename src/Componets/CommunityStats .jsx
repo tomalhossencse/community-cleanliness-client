@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Loading from "./Loading";
 import Animation from "../utility/Animation";
+import Container from "./Container";
 
 const CommunityStats = () => {
   const [loading, setLoading] = useState(true);
@@ -24,40 +25,92 @@ const CommunityStats = () => {
     return <Animation />;
   }
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-50 to-blue-100">
-      <h2 className="text-3xl font-bold text-center mb-10 text-gray-800">
-        Community Stats
-      </h2>
-
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-5xl mx-auto px-6">
-        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl transition-all duration-300">
-          <h3 className="text-5xl font-extrabold text-blue-600">
-            {stats.totalUsers}
-          </h3>
-          <p className="text-lg text-gray-600 mt-2 font-semibold">
-            Total Users
+    <div className="my-12 bg-accent-content">
+      <Container className="flex items-center justify-between gap-10 p-12">
+        <div className="flex-1 space-y-2">
+          <h1 className="text-xl md:text-3xl font-medium text-accent">
+            Assisting Communities for <br />
+            <span className="text-primary">a Better Tomorrow</span>
+          </h1>
+          <p className="text-sm md:text-md text-accent">
+            Working on projects that improve living standards.Building a
+            brighter future for everyone.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl transition-all duration-300">
-          <h3 className="text-5xl font-extrabold text-green-600">
-            {stats.resolvedIssues}
-          </h3>
-          <p className="text-lg text-gray-600 mt-2 font-semibold">
-            Issues Resolved
-          </p>
+        <div className="flex-1 flex justify-center items-center gap-14  bg-accent-content">
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="flex justify-center items-center  gap-4">
+              <div>
+                <img
+                  src="https://img.icons8.com/parakeet/48/group.png"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col justify-between items-center">
+                <h3 className="text-2xl font-semibold text-primary">
+                  {stats.totalUsers}
+                </h3>
+                <p className="text-xs text-gray-600 font-semibold">
+                  Total Users
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-end items-end gap-4">
+              <div>
+                <img
+                  className="w-10"
+                  src="https://img.icons8.com/external-sbts2018-outline-color-sbts2018/58/external-issue-basic-ui-elements-2.5-sbts2018-outline-color-sbts2018.png"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col justify-between items-center">
+                <h3 className="text-2xl font-semibold text-primary">
+                  {Number(stats.resolvedIssues) + Number(stats.pendingIssues)}
+                </h3>
+                <p className="text-xs text-gray-600 font-semibold">
+                  Total Issues
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col items-center justify-center gap-6">
+            <div className="flex justify-end items-end gap-4">
+              <div>
+                <img
+                  src="https://img.icons8.com/color/48/clock--v1.png"
+                  alt=""
+                />
+              </div>
+              <div className="flex flex-col justify-between items-center">
+                <h3 className="text-2xl font-semibold text-primary">
+                  {stats.pendingIssues}
+                </h3>
+                <p className="text-xs text-gray-600 font-semibold">
+                  Pending Issues
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-end items-end gap-4">
+              <div>
+                <img
+                  src="https://img.icons8.com/flat-round/64/checkmark.png"
+                  className="w-10"
+                />
+              </div>
+              <div className="flex flex-col justify-between items-center">
+                <h3 className="text-2xl font-semibold text-primary">
+                  {stats.resolvedIssues}
+                </h3>
+                <p className="text-xs text-gray-600 font-semibold">
+                  Resoved Issues
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="bg-white rounded-2xl shadow-md p-8 text-center hover:shadow-xl transition-all duration-300">
-          <h3 className="text-5xl font-extrabold text-orange-500">
-            {stats.pendingIssues}
-          </h3>
-          <p className="text-lg text-gray-600 mt-2 font-semibold">
-            Issues Pending
-          </p>
-        </div>
-      </div>
-    </section>
+      </Container>
+    </div>
   );
 };
 
